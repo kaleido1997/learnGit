@@ -14,16 +14,16 @@ git init
 git clone urlOfRemoteRepo
 ```
 
-todo: ½«remote addÌáÇ°ÓÚclone£¬²¢ÓÃpullÌæ´úclone
+todo: å°†remote addæå‰äºcloneï¼Œå¹¶ç”¨pullæ›¿ä»£clone <br/>
 Maybe:
 ``` 
-git remote add origin urlOfRemoteRepo    # ½«±¾µØ¹ØÁªÖÁÔ¶³Ìrepository£¬²¢½«Ô¶³Ìrepo¼ò³ÆÎªorigin
-git pull origin branchRemote:branchLocal # ´ÓoriginµÄbranchRemote·ÖÖ§ÖĞÀ­È¡ÄÚÈİÖÁ±¾µØbranchLocal·ÖÖ§
+git remote add origin urlOfRemoteRepo    # å°†æœ¬åœ°å…³è”è‡³è¿œç¨‹repositoryï¼Œå¹¶å°†è¿œç¨‹repoç®€ç§°ä¸ºorigin
+git pull origin branchRemote:branchLocal # ä»originçš„branchRemoteåˆ†æ”¯ä¸­æ‹‰å–å†…å®¹è‡³æœ¬åœ°branchLocalåˆ†æ”¯
 ```
 
 ### Connect Local & Remote Repos
 ```
-git remote add origin urlOfRemoteRepo    # ½«±¾µØ¹ØÁªÖÁÔ¶³Ìrepository£¬²¢½«Ô¶³Ìrepo¼ò³ÆÎªorigin
+git remote add origin urlOfRemoteRepo    # å°†æœ¬åœ°å…³è”è‡³è¿œç¨‹repositoryï¼Œå¹¶å°†è¿œç¨‹repoç®€ç§°ä¸ºorigin
 git remote 
 git remote -v
 git remote show origin
@@ -31,28 +31,28 @@ git remote show origin
 
 ### Connect Branches
 ```
-git checkout -b / switch -c newBranchLocal      # ÔÚ±¾µØ´´½¨²¢ÇĞ»»ÖÁĞÂ·ÖÖ§
+git checkout -b / switch -c newBranchLocal      # åœ¨æœ¬åœ°åˆ›å»ºå¹¶åˆ‡æ¢è‡³æ–°åˆ†æ”¯
 (Same as: git branch newBranchLocal + git checkout/switch newBranchLocal)
-(git checkout branchLocal origin/branchRemote   # Èç¹ûÔ¶³ÌÓĞÄ³Ò»¸ö·ÖÖ§¶ø±¾µØÃ»ÓĞ£¬¸ÃÃüÁî½«Ô¶³ÌµÄ·ÖÖ§Ç¨µ½±¾µØ)
-git branch / branch -r / branch -a		        # ²é¿´±¾µØ/Ô¶³Ì/ËùÓĞ·ÖÖ§
+(git checkout branchLocal origin/branchRemote   # å¦‚æœè¿œç¨‹æœ‰æŸä¸€ä¸ªåˆ†æ”¯è€Œæœ¬åœ°æ²¡æœ‰ï¼Œè¯¥å‘½ä»¤å°†è¿œç¨‹çš„åˆ†æ”¯è¿åˆ°æœ¬åœ°)
+git branch / branch -r / branch -a		        # æŸ¥çœ‹æœ¬åœ°/è¿œç¨‹/æ‰€æœ‰åˆ†æ”¯
 
-git branch --set-upstream-to=origin/branchRemote branchLocal	# ¹ØÁª±¾µØ¼°Ô¶³Ì·ÖÖ§
+git branch --set-upstream-to=origin/branchRemote branchLocal	# å…³è”æœ¬åœ°åŠè¿œç¨‹åˆ†æ”¯
 ```
 
 ### Edit Files, Commit to Local Repo, and Push to Remote Repo 
 ```
 <edit those files>
-git status			                        # ²é¿´µ±Ç°ÎÄ¼ş×´Ì¬£¨ÊÇ·ñadd¡¢commitµÈ£©
+git status			                        # æŸ¥çœ‹å½“å‰æ–‡ä»¶çŠ¶æ€ï¼ˆæ˜¯å¦addã€commitç­‰ï¼‰
 git add *
 git commit -m "Changes for files"
-git push                                    # ÊÊÓÃÓÚÖ®Ç°¹ØÁª¹ı±¾µØÓëÔ¶³Ì·ÖÖ§ºó
+git push                                    # é€‚ç”¨äºä¹‹å‰å…³è”è¿‡æœ¬åœ°ä¸è¿œç¨‹åˆ†æ”¯å
 
 (Otherwise:)
 git push -u origin branchRemote
-# ÓÉÓÚÔ¶³Ì¿âÊÇ¿ÕµÄ£¬ÎÒÃÇµÚÒ»´ÎÍÆËÍbranchLocal·ÖÖ§Ê±£¬¼ÓÉÏÁË-u²ÎÊı£¬
-# Git²»µ«»á°Ñ±¾µØµÄbranchLocal·ÖÖ§ÄÚÈİÍÆËÍµ½Ô¶³ÌµÄĞÂµÄbranchRemote·ÖÖ§£¬
-# »¹»á°Ñ±¾µØµÄbranchLocal·ÖÖ§ºÍÔ¶³ÌµÄbranchRemote·ÖÖ§¹ØÁªÆğÀ´£¬
-# ÔÚÒÔºóµÄÍÆËÍ»òÕßÀ­È¡Ê±¾Í¿ÉÒÔ¼ò»¯ÃüÁî
+# ç”±äºè¿œç¨‹åº“æ˜¯ç©ºçš„ï¼Œæˆ‘ä»¬ç¬¬ä¸€æ¬¡æ¨é€branchLocalåˆ†æ”¯æ—¶ï¼ŒåŠ ä¸Šäº†-uå‚æ•°ï¼Œ
+# Gitä¸ä½†ä¼šæŠŠæœ¬åœ°çš„branchLocalåˆ†æ”¯å†…å®¹æ¨é€åˆ°è¿œç¨‹çš„æ–°çš„branchRemoteåˆ†æ”¯ï¼Œ
+# è¿˜ä¼šæŠŠæœ¬åœ°çš„branchLocalåˆ†æ”¯å’Œè¿œç¨‹çš„branchRemoteåˆ†æ”¯å…³è”èµ·æ¥ï¼Œ
+# åœ¨ä»¥åçš„æ¨é€æˆ–è€…æ‹‰å–æ—¶å°±å¯ä»¥ç®€åŒ–å‘½ä»¤
 
-git push --set-upstream origin branchRemote # ÈôÖ®Ç°pushÊ±Î´¼Ó-u£¬Ôò¿ÉÖ®ºóÔÙÍ¨¹ı--set-upstreamÀ´¹ØÁª±¾µØ¼°Ô¶³Ì
+git push --set-upstream origin branchRemote # è‹¥ä¹‹å‰pushæ—¶æœªåŠ -uï¼Œåˆ™å¯ä¹‹åå†é€šè¿‡--set-upstreamæ¥å…³è”æœ¬åœ°åŠè¿œç¨‹
 ```
