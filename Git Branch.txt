@@ -1,9 +1,0 @@
-git remote -v
-git remote show
-
-git branch -a
-git branch 
-
-git pull origin giant:learn
-git checkout learn
-
