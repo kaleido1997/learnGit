@@ -34,7 +34,7 @@ git remote show origin
 git checkout -b / switch -c newBranchLocal      # 在本地创建并切换至新分支
 (Same as: git branch newBranchLocal + git checkout/switch newBranchLocal)
 (git checkout branchLocal origin/branchRemote   # 如果远程有某一个分支而本地没有，该命令将远程的分支迁到本地)
-git branch / branch -r / branch -a		          # 查看本地/远程/所有分支
+git branch / branch -r / branch -a              # 查看本地/远程/所有分支
 
 git branch --set-upstream-to=origin/branchRemote branchLocal	# 关联本地及远程分支
 ```
@@ -42,7 +42,7 @@ git branch --set-upstream-to=origin/branchRemote branchLocal	# 关联本地及�
 ### Edit Files, Commit to Local Repo, and Push to Remote Repo 
 ```
 <edit those files>
-git status			                            # 查看当前文件状态（是否add、commit等）
+git status                                  # 查看当前文件状态（是否add、commit等）
 git add *
 git commit -m "Changes for files"
 git push                                    # 适用于之前关联过本地与远程分支后
