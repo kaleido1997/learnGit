@@ -42,7 +42,7 @@ git branch --set-upstream-to=origin/branchRemote branchLocal	# 关联本地及�
 ### Edit Files, Commit to Local Repo, and Push to Remote Repo 
 ```
 <edit those files>
-git status			                        # 查看当前文件状态（是否add、commit等）
+git status			                            # 查看当前文件状态（是否add、commit等）
 git add *
 git commit -m "Changes for files"
 git push                                    # 适用于之前关联过本地与远程分支后
