@@ -4,14 +4,57 @@ https://docs.github.com/cn/free-pro-team@latest/github/using-git <br/>
 https://git-scm.com/book/zh/v2 <br/>
 
 可参考的个人文档： <br/>
-https://blog.csdn.net/qq_35246620/article/details/66973794
-https://www.liaoxuefeng.com/wiki/896043488029600
+https://blog.csdn.net/qq_35246620/article/details/66973794 <br/>
+https://www.liaoxuefeng.com/wiki/896043488029600 <br/>
+https://edu.aliyun.com/course/489
+
+Cheatsheet： <br/>
+![Git Cheatsheet](assets/Git%20cheatsheet.jpg "The Cheatsheet")
+
+## Git 相关概念与工作流程
+
+![Git Working Procedure](assets/GitWorkingProcedure.png "The Procedure")
+
+工作区：就是你在电脑里能看到的目录。 <br/>
+暂存区：英文叫stage, 或index。一般存放在 ".git目录下" 下的index文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。 <br/>
+版本库：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。
+
+![Git Architecture](assets/GitArchitecture.png "The Architecture")
+
+图中左侧为工作区，右侧为版本库。在版本库中标记为 "index" 的区域是暂存区（stage, index），标记为 "master" 的是 master 分支所代表的目录树。 <br/>
+可以看出此时 "HEAD" 实际是指向 master 分支的一个"游标"。所以图示的命令中出现 HEAD 的地方可以用 master 来替换。 <br/>
+图中的 objects 标识的区域为 Git 的对象库，实际位于 ".git/objects" 目录下，里面包含了创建的各种对象及内容。 <br/>
+
+当对工作区修改（或新增）的文件执行 "git add" 命令时，暂存区的目录树被更新，同时工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的ID被记录在暂存区的文件索引中。 <br/>
+当执行提交操作（git commit）时，暂存区的目录树写到版本库（对象库）中，master 分支会做相应的更新。即 master 指向的目录树就是提交时暂存区的目录树。 <br/>
+当执行 "git reset HEAD" 命令时，暂存区的目录树会被重写，被 master 分支指向的目录树所替换，但是工作区不受影响。 <br/>
+当执行 "git rm --cached <file>" 命令时，会直接从暂存区删除文件，工作区则不做出改变。 <br/>
+当执行 "git checkout ." 或者 "git checkout -- <file>" 命令时，会用暂存区全部或指定的文件替换工作区的文件。这个操作很危险，会清除工作区中未添加到暂存区的改动。 <br/>
+当执行 "git checkout HEAD ." 或者 "git checkout HEAD <file>" 命令时，会用 HEAD 指向的 master 分支中的全部或者部分文件替换暂存区和以及工作区中的文件。
+这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。 <br/>
+
 
 # 从获取源文件到提交修改的全过程
 
 ## 纯代码的形式
 
 ### Git Account Config
+config可以存放在以下三个不同的地方：
+1. /etc/gitconfig文件：系统中对所有用户都普遍适用的配置。若使用git config时用--system选项，读写的就是这个文件。
+2. ~/.gitconfig文件：用户目录下的配置文件只适用于该用户。若使用git config时用--global选项，读写的就是这个文件。
+3. 当前项目的Git目录中的配置文件（也就是工作目录中的.git/config文件）：这里的配置仅仅针对当前项目有效。
+每一个级别的配置都会覆盖上层的相同配置，所以.git/config里的配置会覆盖/etc/gitconfig中的同名变量。
+在Windows系统上，Git会找寻用户主目录下的.gitconfig文件。主目录即$HOME变量指定的目录，一般都是 C:\Documents and Settings\$USER。
+此外，Git还会尝试找寻/etc/gitconfig文件，只不过看当初Git装在什么目录，就以此作为根目录来定位。
+
+查看config：
+```
+git config -l/--list
+git config user.name
+git config user.email
+```
+
+修改config：
 ```
 git config --global user.email "theEmail@example.com"
 git config --global user.name "theNickname"
@@ -55,7 +98,7 @@ git branch --set-upstream-to=origin/branchRemote branchLocal	# 关联本地及�
 ```
 <edit those files>
 git status                          # 查看当前文件状态（是否add、commit等）
-git add *
+git add * <or fileName>             # *表示所有文件，类似*.js表示所有js文件
 git ls-files                        # 列出所有跟踪的文件名
 git commit -m "Changes for files"   
 git push                            # 适用于之前关联过本地与远程分支后
