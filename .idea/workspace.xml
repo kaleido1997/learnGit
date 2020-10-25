@@ -20,10 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0192408-ce44-4a06-a3d1-219938e32347" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/Git cheatsheet.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/About Git.docx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Git from scratch.md" beforeDir="false" afterPath="$PROJECT_DIR$/Git from scratch.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Git cheatsheet.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/GitCheatsheet.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +69,7 @@
       <workItem from="1603158710534" duration="10104000" />
       <workItem from="1603272778302" duration="666000" />
       <workItem from="1603327033220" duration="679000" />
-      <workItem from="1603588763972" duration="7916000" />
+      <workItem from="1603588763972" duration="8011000" />
     </task>
     <servers />
   </component>

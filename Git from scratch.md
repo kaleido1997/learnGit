@@ -9,7 +9,7 @@ https://www.liaoxuefeng.com/wiki/896043488029600 <br/>
 https://edu.aliyun.com/course/489
 
 Cheatsheet： <br/>
-![Git Cheatsheet](assets/Git%20cheatsheet.jpg "The Cheatsheet")
+![Git Cheatsheet](assets/GitCheatsheet.jpg "The Cheatsheet")
 
 ## Git 相关概念与工作流程
 
