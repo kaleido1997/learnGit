@@ -1,4 +1,4 @@
-## 101
+## ´¿´úÂëµÄĞÎÊ½
 
 ### Git Account Config
 ```
@@ -14,9 +14,8 @@ git init
 git clone urlOfRemoteRepo
 ```
 
-todo: ½«remote addÌáÇ°ÓÚclone£¬²¢ÓÃpullÌæ´úclone
-Maybe:
-``` 
+ÕâÀïclone»ò¿É¸ÄÎª£º
+```
 git remote add origin urlOfRemoteRepo    # ½«±¾µØ¹ØÁªÖÁÔ¶³Ìrepository£¬²¢½«Ô¶³Ìrepo¼ò³ÆÎªorigin
 git pull origin branchRemote:branchLocal # ´ÓoriginµÄbranchRemote·ÖÖ§ÖĞÀ­È¡ÄÚÈİÖÁ±¾µØbranchLocal·ÖÖ§
 ```
@@ -35,6 +34,7 @@ git checkout -b / switch -c newBranchLocal      # ÔÚ±¾µØ´´½¨²¢ÇĞ»»ÖÁĞÂ·ÖÖ§
 (Same as: git branch newBranchLocal + git checkout/switch newBranchLocal)
 (git checkout branchLocal origin/branchRemote   # Èç¹ûÔ¶³ÌÓĞÄ³Ò»¸ö·ÖÖ§¶ø±¾µØÃ»ÓĞ£¬¸ÃÃüÁî½«Ô¶³ÌµÄ·ÖÖ§Ç¨µ½±¾µØ)
 git branch / branch -r / branch -a		        # ²é¿´±¾µØ/Ô¶³Ì/ËùÓĞ·ÖÖ§
+£¨Èç¹ûÖ®Ç°´ÓÎ´commit¹ı£¬Ôò¿´²»µ½branchĞÅÏ¢£©
 
 git branch --set-upstream-to=origin/branchRemote branchLocal	# ¹ØÁª±¾µØ¼°Ô¶³Ì·ÖÖ§
 ```
@@ -42,17 +42,98 @@ git branch --set-upstream-to=origin/branchRemote branchLocal	# ¹ØÁª±¾µØ¼°Ô¶³Ì·ÖÖ
 ### Edit Files, Commit to Local Repo, and Push to Remote Repo 
 ```
 <edit those files>
-git status			                        # ²é¿´µ±Ç°ÎÄ¼ş×´Ì¬£¨ÊÇ·ñadd¡¢commitµÈ£©
+git status                          # ²é¿´µ±Ç°ÎÄ¼ş×´Ì¬£¨ÊÇ·ñadd¡¢commitµÈ£©
 git add *
-git commit -m "Changes for files"
-git push                                    # ÊÊÓÃÓÚÖ®Ç°¹ØÁª¹ı±¾µØÓëÔ¶³Ì·ÖÖ§ºó
+git commit -m "Changes for files"   
+git push                            # ÊÊÓÃÓÚÖ®Ç°¹ØÁª¹ı±¾µØÓëÔ¶³Ì·ÖÖ§ºó
 
 (Otherwise:)
 git push -u origin branchRemote
+---------------
+git push origin localBranchName:remoteBranchName
+---------------
 # ÓÉÓÚÔ¶³Ì¿âÊÇ¿ÕµÄ£¬ÎÒÃÇµÚÒ»´ÎÍÆËÍbranchLocal·ÖÖ§Ê±£¬¼ÓÉÏÁË-u²ÎÊı£¬
 # Git²»µ«»á°Ñ±¾µØµÄbranchLocal·ÖÖ§ÄÚÈİÍÆËÍµ½Ô¶³ÌµÄĞÂµÄbranchRemote·ÖÖ§£¬
 # »¹»á°Ñ±¾µØµÄbranchLocal·ÖÖ§ºÍÔ¶³ÌµÄbranchRemote·ÖÖ§¹ØÁªÆğÀ´£¬
-# ÔÚÒÔºóµÄÍÆËÍ»òÕßÀ­È¡Ê±¾Í¿ÉÒÔ¼ò»¯ÃüÁî
+# ÔÚÒÔºóµÄÍÆËÍ»òÕßÀ­È¡Ê±¾Í¿ÉÒÔ¼ò»¯ÃüÁî¡£
 
 git push --set-upstream origin branchRemote # ÈôÖ®Ç°pushÊ±Î´¼Ó-u£¬Ôò¿ÉÖ®ºóÔÙÍ¨¹ı--set-upstreamÀ´¹ØÁª±¾µØ¼°Ô¶³Ì
+```
+
+pushºó¿ÉÄÜ»á³öÏÖ³åÍ»£¬terminalÌáÊ¾ĞèÒªÏÈpull¡£ <br/>
+pullÖ®Ç°¿ÉÒÔstashÔİÊ±´æ´¢±¾µØĞŞ¸Ä£¬ÔÚpullÖ®ºóÔÙunstash£º
+```
+git stash save -a "stashName"
+git pull
+git stash apply
+```
+
+¹ØÓÚstash£º
+```
+Ref: https://www.cnblogs.com/tocy/p/git-stash-reference.html
+git stash save -a "stashName"   # ´´½¨stash£¬-a±íÊ¾stashµ±Ç°Ä¿Â¼ÏÂµÄËùÓĞĞŞ¸Ä£¬°üÀ¨untracked filesºÍignored files
+git stash list                  # ²é¿´µ±Ç°µÄËùÓĞstash
+git stash show <stashName>      # ²é¿´Ö¸¶¨stashÖĞ¶ÔÎÄ¼ş¸ü¸ÄµÄÇé¿ö
+git stash show <stashName> -p   # ²é¿´Ö¸¶¨stashÖĞ¶ÔÎÄ¼ş¸ü¸ÄµÄÏêÏ¸Çé¿ö
+
+git stash pop <stashName>       # Ó¦ÓÃstash²¢É¾³ı
+git stash apply <stashName>     # Ó¦ÓÃstashµ«²»É¾³ı
+git stash drop <stashName>      # É¾³ıÃûÎªstashNameµÄstash
+
+git stash branch newBranch      # ´´½¨Ò»¸öĞÂµÄ·ÖÖ§±£´æÕâ²¿·Östash£¬Ô­·ÖÖ§µÄstash½«±»É¾³ı
+```
+
+Èô²»ÏëÍ¨¹ıstash£¬¶øÊÇÖ±½ÓĞŞ¸Ä³åÍ»£º <br/>
+³åÍ»µÄ²é¿´ÓĞ¶àÖÖ°ì·¨£¬Ê×ÏÈÊÇÊ¹ÓÃ```git diff```£¬ÔÚÔ­ÎÄ¼şÖĞÕÒ²îÒìÈ»ºóĞŞ¸Ä£»
+»òÕßÔÚwebstormÖĞÓÃÊó±êÓÒ¼üµã»÷ÎÄ¼şcommit directory£¬È»ºóµã»÷Ä³¸öÎÄ¼ş²é¿´¸Ä¶¯µÄµØ·½£»
+ÁíÍâ»¹¿ÉÒÔÊ¹ÓÃBeyond CompareµÈÍâ²¿³ÌĞò½øĞĞĞŞ¸Ä¡£
+
+
+## ÊÖ¶¯ÏÂÔØzipÎÄ¼şµÄĞÎÊ½
+
+ÈôÊÇµ¥¶ÀÏÂÔØµÄzipÎÄ¼ş£¨¼´²»Ğèclone£©£¬Î´ÓëÔ¶³ÌÁ¬½Ó¹ı£¬ÔòÓ¦Îª£º
+
+### Init
+```
+cd locationOfZipFile                            # ³õÊ¼»¯GitÖ®Ç°È·ÈÏÏîÄ¿Â·¾¶
+git init                                        # ³õÊ¼»¯Git£¬´´½¨±¾µØ²Ö¿â
+git checkout -b / switch -c newBranchLocal      # ÔÚ±¾µØ´´½¨²¢ÇĞ»»ÖÁĞÂ·ÖÖ§
+```
+Ö®ºó¿ÉÓÃ```git status, git log```µÈËæÊ±½øĞĞµ÷ÊÔ¡£
+
+### Connect to Remote Repo
+```
+git add *                                       # ½«¶ÔÎÄ¼şµÄ±à¼­Ìá½»ÖÁÔİ´æÇø£¬*±íÊ¾È«²¿ÎÄ¼ş
+git commit -m "msg"                             # ½«Ôİ´æÇøµÄĞŞ¸ÄÌá½»ÖÁ±¾µØ²Ö¿â£¬Ö´ĞĞºó²Å»áÕæÕıÉú³É±¾µØ·ÖÖ§
+
+git remote add origin theURL    # ½«±¾µØ²Ö¿â¹ØÁªÖÁÔ¶³Ì²Ö¿â£¬²¢½«Ô¶³Ì²Ö¿â³ÆÎªorigin
+                                # ÔÚµÚÒ»´ÎcommitÖ®Ç°£¬Ä¬ÈÏµ±Ç°branchÎ´´´½¨£¬ËùÒÔgit remote addÊÇÎŞĞ§µÄ
+```
+
+Ìí¼Óremoteºó¿ÉÓÃÈçÏÂµ÷ÊÔ£º
+```
+git remote
+git remote -v
+git remote show origin
+```
+commitºó·ÖÖ§²ÅÕæÕı½¨Á¢£¬¿ÉÓÃ```git branch / branch -r/ branch -a```µÈ½øĞĞµ÷ÊÔ¡£
+
+### Pull & Push
+Á¬½ÓÔ¶³Ì²Ö¿âºó£¬¿ªÊ¼ÏòÔ¶³Ì²Ö¿âpushÌá½»ĞŞ¸Ä¡£pushÖ®Ç°ĞèÒªÏÈpull£º
+```
+git stash save -a "stashName"   # Õı³£Ó¦ÔÚpullÖ®Ç°stash±¾´Î¸ü¸Ä£¬pullÖ®ºóÔÙunstash£¬È»ºópush
+                                # ÓÉÓÚ±¾´ÎÖ±½ÓÏÂÔØÁËzipÔ´ÎÄ¼ş£¬Ã»ÓĞÔÚÏÂÔØÇ°ÓëÔ¶³Ì¹ØÁª£¬ËùÒÔÕâ²½Ìø¹ı
+
+git pull origin remoteBranch --allow-unrelated-histories    # ½«Ô¶³Ìorigin²Ö¿âÖĞµÄremoteBranch·ÖÖ§µÄÄÚÈİpullÏÂÀ´
+                                                            # ÓÉÓÚÖ®Ç°Î´ÓëÔ¶³Ì¹ØÁª£¬¹ÊĞèÒªallow unrelated Git history               
+```
+pullÖ®ºó¿ÉÄÜ»á±¨´í£¬ÌáÊ¾ÓĞĞ©ÎÄ¼şĞèÒªmerge¡£ <br/>
+ÓÉÓÚ±¾´ÎÖ±½ÓÏÂÔØÁËzipÔ´ÎÄ¼ş£¬Ã»ÓĞÔÚÏÂÔØÇ°ÓëÔ¶³Ì¹ØÁª£¬¹ÊÎŞ·¨Ê¹ÓÃÉÏÊöµÄstash£¬Ö»ÄÜÊÖ¶¯ĞŞ¸Ä¡£
+
+ÕâÊ±ÔòĞèÒªÊäÈëgit diff»òÊ¹ÓÃÈçBeyond CompareÈí¼ş¶ÔÕâĞ©ÎÄ¼ş½øĞĞÊÖ¶¯ĞŞ¸Ä¡£ <br/>
+ÊäÈëgit diff£¬Şô¿Õ¸ñÏÔÊ¾¸ü¶àÄÚÈİ£¬ŞôqÍË³öµ±Ç°diffÄ£Ê½£¬ÔÚÔ­³ÌĞòÎÄ¼şÖĞ¡±>>>>¡°¼äµÄ²¿·Ö½øĞĞĞŞ¸Ä¡£
+
+¸Äµ½Ã»ÓĞ³åÍ»ÎªÖ¹£¬ÔÙpush£º
+```
+git push origin localBranch:remoteBranch    # ½«±¾µØµÄlocalBranch·ÖÖ§µÄÄÚÈİÍÆËÍµ½Ô¶³Ìorigin²Ö¿âµÄremoteBranch·ÖÖ§ÖĞ
 ```
