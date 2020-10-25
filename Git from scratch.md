@@ -1,3 +1,14 @@
+# Intro
+可参考的官方文档： <br/>
+https://docs.github.com/cn/free-pro-team@latest/github/using-git <br/>
+https://git-scm.com/book/zh/v2 <br/>
+
+可参考的个人文档： <br/>
+https://blog.csdn.net/qq_35246620/article/details/66973794
+https://www.liaoxuefeng.com/wiki/896043488029600
+
+# 从获取源文件到提交修改的全过程
+
 ## 纯代码的形式
 
 ### Git Account Config
@@ -37,6 +48,7 @@ git branch / branch -r / branch -a		        # 查看本地/远程/所有分支
 （如果之前从未commit过，则看不到branch信息）
 
 git branch --set-upstream-to=origin/branchRemote branchLocal	# 关联本地及远程分支
+# 此步用于如果git pull提示no tracking information，说明本地分支和远程分支的链接关系没有创建
 ```
 
 ### Edit Files, Commit to Local Repo, and Push to Remote Repo 
@@ -44,6 +56,7 @@ git branch --set-upstream-to=origin/branchRemote branchLocal	# 关联本地及�
 <edit those files>
 git status                          # 查看当前文件状态（是否add、commit等）
 git add *
+git ls-files                        # 列出所有跟踪的文件名
 git commit -m "Changes for files"   
 git push                            # 适用于之前关联过本地与远程分支后
 
@@ -79,14 +92,23 @@ git stash show <stashName> -p   # 查看指定stash中对文件更改的详细�
 git stash pop <stashName>       # 应用stash并删除
 git stash apply <stashName>     # 应用stash但不删除
 git stash drop <stashName>      # 删除名为stashName的stash
+git stash clear                 # 清除所有stash
 
 git stash branch newBranch      # 创建一个新的分支保存这部分stash，原分支的stash将被删除
 ```
 
 若不想通过stash，而是直接修改冲突： <br/>
-冲突的查看有多种办法，首先是使用```git diff```，在原文件中找差异然后修改；
-或者在webstorm中用鼠标右键点击文件commit directory，然后点击某个文件查看改动的地方；
+冲突的查看有多种办法，首先是使用```git diff```，在原文件中找差异然后修改； <br/>
+或者在webstorm中用鼠标右键点击文件commit directory，然后点击某个文件查看改动的地方； <br/>
 另外还可以使用Beyond Compare等外部程序进行修改。
+
+有时stash也会报错```needs merge```，这时可以粗暴地把需要merge的文件全部剪切出来，add及commit后push，再把剪切的部分粘回来，再次add commit push。
+
+### Version Rollback
+实在没办法需要回退版本时，则用：
+```
+git reset --hard <commit_id>    # 将版本回退到对应的commit_id上，commit id可以git log查看
+```
 
 
 ## 手动下载zip文件的形式
@@ -99,7 +121,7 @@ cd locationOfZipFile                            # 初始化Git之前确认项目
 git init                                        # 初始化Git，创建本地仓库
 git checkout -b / switch -c newBranchLocal      # 在本地创建并切换至新分支
 ```
-之后可用```git status, git log```等随时进行调试。
+之后可用```git status, git log / git log --graph```等随时进行调试。
 
 ### Connect to Remote Repo
 ```
@@ -137,3 +159,10 @@ pull之后可能会报错，提示有些文件需要merge。 <br/>
 ```
 git push origin localBranch:remoteBranch    # 将本地的localBranch分支的内容推送到远程origin仓库的remoteBranch分支中
 ```
+
+
+# Fork / Pull Request
+Ref: <br/>
+http://www.ruanyifeng.com/blog/2017/07/pull_request.html <br/>
+https://github.com/selfteaching/the-craft-of-selfteaching/issues/67
+
